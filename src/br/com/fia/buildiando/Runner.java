@@ -6,9 +6,16 @@ public class Runner {
 
 	public static void main(String[] args) {
 		
-		FundoInvestimento f1 = new FundoInvestimento(43001, "Fiap 1 RF");
+		FundoInvestimento f1 = new FundoInvestimento.Builder(43001, "Fiap 1 RF")
+					.aberto()
+					.diasResgate(30)
+					.economistaChefe("Pedro Malan")
+					.taxaAdministracao(2)
+					.build();
 		
-		FundoInvestimento f2 = new FundoInvestimento(43002, "Fiap 2 LCA");
+		FundoInvestimento f2 = new FundoInvestimento.Builder(43002, "Fiap 2 LCA")
+					.fechado()
+					.build();
 		
 		
 		

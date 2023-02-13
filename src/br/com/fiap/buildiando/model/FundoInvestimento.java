@@ -17,102 +17,100 @@ public class FundoInvestimento {
 	private String economistaChefe;
 	
 	
-	public FundoInvestimento(int codigoCVM, String nomeFundo) {
-		super();
-		this.codigoCVM = codigoCVM;
-		this.nomeFundo = nomeFundo;
+	public static class Builder {
+		
+		//Requeridos
+		private int codigo;
+		private String nome;
+		
+		private Date dataOperacao;
+		private double valorMinimo;
+		private double valorMaximo;
+		private int diasResgate;
+		private double taxaAdministracao;
+		private double taxaCustodia;
+		private boolean fundoFechado;
+		private String economistaChefe;
+		
+		
+		public Builder(int codigo, String nome) {
+			this.codigo = codigo;
+			this.nome = nome;
+		}
+
+
+		public Builder dataOperacao(Date dataOperacao) {
+			this.dataOperacao = dataOperacao;
+			return this;
+		}
+
+
+		public Builder valorMinimo(double valorMinimo) {
+			this.valorMinimo = valorMinimo;
+			return this;
+		}
+
+
+		public Builder valorMaximo(double valorMaximo) {
+			this.valorMaximo = valorMaximo;
+			return this;
+		}
+
+
+		public Builder diasResgate(int diasResgate) {
+			this.diasResgate = diasResgate;
+			return this;
+		}
+
+
+		public Builder taxaAdministracao(double taxaAdministracao) {
+			this.taxaAdministracao = taxaAdministracao;
+			return this;
+		}
+
+
+		public Builder taxaCustodia(double taxaCustodia) {
+			this.taxaCustodia = taxaCustodia;
+			return this;
+		}
+
+
+		public Builder fechado() {
+			this.fundoFechado = true;
+			return this;
+		}
+
+		public Builder aberto() {
+			this.fundoFechado = false;
+			return this;
+		}
+		
+
+		public Builder economistaChefe(String economistaChefe) {
+			this.economistaChefe = economistaChefe;
+			return this;
+		}
+		
+		public FundoInvestimento build() {
+			return new FundoInvestimento(this);
+		}
+		
 	}
 
-
-	public FundoInvestimento(int codigoCVM, String nomeFundo, Date dataOperacao) {
-		super();
-		this.codigoCVM = codigoCVM;
-		this.nomeFundo = nomeFundo;
-		this.dataOperacao = dataOperacao;
+	
+	private FundoInvestimento(Builder builder) {
+		this.codigoCVM = builder.codigo;
+		this.nomeFundo = builder.nome;
+		this.dataOperacao = builder.dataOperacao;
+		this.valorMinimo= builder.valorMaximo;
+		this.valorMaximo = builder.valorMaximo;
+		this.diasResgate = builder.diasResgate;
+		this.taxaAdministracao= builder.taxaAdministracao;
+		this.taxaCustodia= builder.taxaCustodia;
+		this.fundoFechado= builder.fundoFechado;
+		this.economistaChefe= builder.economistaChefe;
 	}
-
-
-	public FundoInvestimento(int codigoCVM, String nomeFundo, Date dataOperacao, double valorMinimo) {
-		super();
-		this.codigoCVM = codigoCVM;
-		this.nomeFundo = nomeFundo;
-		this.dataOperacao = dataOperacao;
-		this.valorMinimo = valorMinimo;
-	}
-
-
-	public FundoInvestimento(int codigoCVM, String nomeFundo, double valorMinimo, double valorMaximo,
-			double taxaAdministracao, double taxaCustodia) {
-		super();
-		this.codigoCVM = codigoCVM;
-		this.nomeFundo = nomeFundo;
-		this.valorMinimo = valorMinimo;
-		this.valorMaximo = valorMaximo;
-		this.taxaAdministracao = taxaAdministracao;
-		this.taxaCustodia = taxaCustodia;
-	}
-
-
-	public FundoInvestimento(int codigoCVM, String nomeFundo, String economistaChefe, double taxaAdministracao,
-			double taxaCustodia) {
-		super();
-		this.codigoCVM = codigoCVM;
-		this.nomeFundo = nomeFundo;
-		this.economistaChefe = economistaChefe;
-		this.taxaAdministracao = taxaAdministracao;
-		this.taxaCustodia = taxaCustodia;
-	}
-
-
-	public int getCodigoCVM() {
-		return codigoCVM;
-	}
-
-
-	public String getNomeFundo() {
-		return nomeFundo;
-	}
-
-
-	public Date getDataOperacao() {
-		return dataOperacao;
-	}
-
-
-	public double getValorMinimo() {
-		return valorMinimo;
-	}
-
-
-	public double getValorMaximo() {
-		return valorMaximo;
-	}
-
-
-	public int getDiasResgate() {
-		return diasResgate;
-	}
-
-
-	public double getTaxaAdministracao() {
-		return taxaAdministracao;
-	}
-
-
-	public double getTaxaCustodia() {
-		return taxaCustodia;
-	}
-
-
-	public boolean isFundoFechado() {
-		return fundoFechado;
-	}
-
-
-	public String getEconomistaChefe() {
-		return economistaChefe;
-	}
-
+	
 
 	@Override
 	public String toString() {
